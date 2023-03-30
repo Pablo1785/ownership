@@ -166,3 +166,24 @@ fn borrow_fn<'a>(r1: &'a i32, r2: &'a i32) -> &'a i32 {
     }
 }
 ```
+
+# Tips
+
+1. Avoid borrowing values in structs, enums, and collections.
+    - Use String instead of &str, Vec<T> instead of &[T]
+    - Similarly, use Vec<T> instead of Vec<&T>, HashMap<String, T> instead of HashMap<&str, T>
+2. Use #[derive(Clone)] and .clone() to physically copy values. Copy is quite convenient because it changes the behavior of the assignment operator from move semantics to copy semantics, so you don't have to write .clone(), but it can cause unintended copies.
+
+Here's a quick snippet about borrowing two mutable slices from the same collection at the same time. There are two ways to work around this:
+
+a) Vec has the method .split_mut() and .split_at_mut() which give us two slices without copying data.
+
+b) Use an iterator. The Iterator trait contains a huge number of helpful methods for this problem.
+
+c) Copy slices to Vectors.
+
+3. Use smart pointers to build recursive data structures. It is possible to do this without them, but it is a deep rabbit hole and not recommended because you can quickly become discouraged. Link to the linked list tutorial is at the end of the presentation
+
+4. *Use smart pointers to circumvent ownership and borrow checker rules. RefCell, Rc, Arc, and other smart pointers allow us to shift borrow checking from compile time to runtime. Here, of course, we must be careful and use the minimum working pointer. Pointer cheat sheet is at the end of the presentation
+
+5. As a side note, use .unwrap() and .expect() to unpack Option<> and Result<> types.
