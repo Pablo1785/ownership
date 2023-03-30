@@ -1,0 +1,44 @@
+[package]
+name = "ownership"
+version = "0.1.0"
+edition = "2021"
+
+
+[[bin]]
+name = "move1"
+path = "src/move/1.rs"
+
+[[bin]]
+name = "move2"
+path = "src/move/2.rs"
+
+[[bin]]
+name = "borrow1"
+path = "src/borrow/1.rs"
+
+[[bin]]
+name = "borrow2"
+path = "src/borrow/2.rs"
+
+[[bin]]
+name = "borrow3"
+path = "src/borrow/3.rs"
+
+[[bin]]
+name = "borrow4"
+path = "src/borrow/4.rs"
+
+[[bin]]
+name = "slice1"
+path = "src/slice/1.rs"
+
+[[bin]]
+name = "string1"
+path = "src/string/1.rs"
+
+[[bin]]
+name = "test"
+path = "src/test.rs"
+
+
+[dependencies]
